@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Customer Sales Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Popily stylesheet for styling the analytics -->
+    <link href="assets/css/popily.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/prism.css" rel="stylesheet" />
+
+    <!-- Comment out to see Popily.js code examples -->
+    <!--
+    <style>
+        pre {
+            display: none;
+        }
+
+        hr {
+            display: none;
+        }
+
+        div.alert-info {
+            display: none;
+        }
+    </style>
+     -->
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        $(document).ready(function() {
+            $("#hide").click(function() {
+                $("pre").hide();
+                $(".btn-danger").hide();
+                $(".btn-success").show();
+            });
+            $("#show").click(function() {
+                $("pre").show();
+                $(".btn-danger").show();
+                $(".btn-success").hide();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Customer Sales Dashboard</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-right">
+                    <li ><a class='request-demo' href='http://popily.com'>Request Popily Demo</a></li>
+                </ul>
+
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <button id="hide" class="btn btn-danger btn-sm" style="display: none;">Hide Code</button>
+        <button id="show" class="btn btn-success btn-sm">Show Code</button>
+        <div class='row'>
+            <div class='col-sm-8'>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="chart-1">
+                        </div>
+                    </div>
+                </div>
+                <pre style="display: none;"><code class="language-javascript">var chart5Options = {
+    source: 'superstore-sales-csv-5',
+    columns: ['Order Date', 'Customer Segment'],
+    timeInterval: 'month',
+    colors: colors,
+    yGrid: false,
+    yLabel: 'Orders'
+};
+
+popily.chart.getAndRender('#chart-1', chart5Options);</code></pre>
+            </div>
+            <div class='col-sm-4'>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="chart-2">
+                        </div>
+                    </div>
+                </div>
+                <pre style="display: none;"><code class="language-javascript">var chart2Options = {
+    source: 'superstore-sales-csv-5',
+    columns: ['Profit', 'Sales', 'Customer Segment'],
+    xLabel: 'Reported Profit',
+    yLabel: 'Reported Sales',
+    colors: colors,
+    yGrid: false,
+    xGrid: false,
+    transformations: [{
+        column: 'Profit',
+        op: 'gt',
+        values: 4000
+    },
+    {
+        column: 'Profit',
+        op: 'lt',
+        values: 16000
+    }],
+};
+
+
+popily.chart.getAndRender('#chart-2', chart2Options);</code></pre>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-4'>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="chart-3">
+                        </div>
+                    </div>
+                </div>
+                <pre style="display: none;"><code class="language-javascript">var chart3Options = {
+    source: 'superstore-sales-csv-5',
+    columns: ['Sales', 'Product Category', 'Customer Segment'],
+    calculation: 'average',
+    xColumn: 'Product Category',
+    groupByColumn: 'Customer Segment',
+    rotated: true,
+    colors: colors,
+    yGrid: false,
+};
+
+popily.chart.getAndRender('#chart-3', chart3Options);</code></pre>
+            </div>
+            <div class='col-sm-4'>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="chart-4">
+                        </div>
+                    </div>
+
+                </div>
+                <pre style="display: none;"><code class="language-javascript">var chart4Options = {
+    source: 'superstore-sales-csv-5',
+    columns: ['Sales', 'Customer Segment', 'Product Category'],
+    calculation: 'sum',
+    colors: colors,
+    yGrid: false,
+    transformations: [{
+        column: 'Customer Segment',
+        op: 'eq',
+        values: ['Consumer', 'Corporate', 'Home Office']
+    }],
+};
+
+popily.chart.getAndRender('#chart-4', chart4Options);</code></pre>
+            </div>
+            <div class='col-sm-4'>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="chart-5">
+                        </div>
+                    </div>
+
+                </div>
+                <pre style="display: none;"><code class="language-javascript">var chart5Options = {
+    source: 'superstore-sales-csv-5',
+    columns: ['Order Date', 'Product Category'],
+    timeInterval: 'month',
+    colors: colors,
+    yGrid: false,
+    yLabel: 'Orders'
+};
+
+popily.chart.getAndRender('#chart-5', chart5Options);</code></pre>
+            </div>
+        </div>
+
+    </div>
+    <!-- /container -->
+
+    <!-- Load the popily.js files -->
+    <script type="text/javascript" src="assets/js/popily.js"></script>
+    <script type="text/javascript" src="assets/js/popily-geo.js"></script>
+
+    <script>
+        popily.api.setToken('d39c69f05c5fae5cbcbe6a3b6ebac693c6ffb807');
+    </script>
+
+    <!-- <script>
+        var url = 'https://raw.githubusercontent.com/chrisalbon/superstore_sales/master/superstore_sales.csv'
+        var columns = [{
+                'column_header': 'Order ID',
+                'data_type': 'rowlabel'
+            }, {
+                'column_header': 'Order Date',
+                'data_type': 'datetime'
+            }, {
+                'column_header': 'Order Priority',
+                'data_type': 'category'
+            }, {
+                'column_header': 'Order Quantity',
+                'data_type': 'numeric'
+            }, {
+                'column_header': 'Sales',
+                'data_type': 'numeric'
+            }, {
+                'column_header': 'Profit',
+                'data_type': 'numeric'
+            }, {
+                'column_header': 'Unit Price',
+                'data_type': 'numeric'
+            }, {
+                'column_header': 'Customer Name',
+                'data_type': 'rowlabel'
+            }, {
+                'column_header': 'Customer Segment',
+                'data_type': 'category'
+            }, {
+                'column_header': 'Product Category',
+                'data_type': 'category'
+            }, {
+                'column_header': 'State',
+                'data_type': 'state'
+            }, {
+                'column_header': 'Location',
+                'data_type': 'coordinate'
+            }]
+
+        var sourceOptions = {columns:columns, url:url};
+        popily.api.addSource(sourceOptions, function(err, source) {
+            console.log(source);
+        });
+    </script> -->
+
+    <!--  <script >
+  popily.api.setToken('d39c69f05c5fae5cbcbe6a3b6ebac693c6ffb807');
+  var sourceData = {
+    url: 'https://www.dropbox.com/s/txy0gxujm2axv6p/game_of_thrones_battles.csv?dl=1'
+  }
+
+  popily.api.addSource(sourceData, function(err, source) {
+      var chartOptions = {
+          source: source.slug,
+          columns: ['Battle','Year','Attacker','Defender','Outcome','Type Of Battle','Major Character Death','Attacking Army Size','Defending Army Size','Size Of Both Armies','Season','location','region'],
+          poll: true
+      };
+      console.log(source);
+    });
+</script>
+
+<script >
+  popily.api.setToken('db4224a4448de835734eb78d20ec8acd79a642b0');
+  popily.api.setURL('http://127.0.0.1:8000');
+
+  var sourceData = {
+    url: 'https://www.dropbox.com/s/txy0gxujm2axv6p/game_of_thrones_battles.csv?dl=1'
+  }
+
+  popily.api.addSource(sourceData, function(err, source) {
+      var chartOptions = {
+          source: source.slug,
+          columns: ['Season', 'Outcome'],
+          poll: true
+      };
+
+      popily.chart.getAndRender('#my-chart', chartOptions);
+  });
+</script> -->
+
+    <script>
+        var colors = ['#3de6b1', '#22ecf0', '#19d1fd', '#14b1fd', '#2c7fdb', '#3d52bf', '#6539b3', '#a032b2', '#d124a9', '#fb139c', '#fea7d4', '#ffffff']
+
+        var titleFontSize = '16px'
+
+        var chart5Options = {
+            source: 'superstore-sales-csv-5',
+            columns: ['Order Date', 'Customer Segment'],
+            timeInterval: 'month',
+            colors: colors,
+            yGrid: false,
+            yLabel: 'Orders'
+        };
+
+        popily.chart.getAndRender('#chart-1', chart5Options);
+
+        var chart2Options = {
+            source: 'superstore-sales-csv-5',
+            columns: ['Profit', 'Sales', 'Customer Segment'],
+            xLabel: 'Reported Profit',
+            yLabel: 'Reported Sales',
+            colors: colors,
+            yGrid: false,
+            xGrid: false,
+            transformations: [{
+                column: 'Profit',
+                op: 'gt',
+                values: 4000
+            },
+            {
+                column: 'Profit',
+                op: 'lt',
+                values: 16000
+            }],
+        };
+
+
+        popily.chart.getAndRender('#chart-2', chart2Options);
+
+        var chart3Options = {
+            source: 'superstore-sales-csv-5',
+            columns: ['Sales', 'Product Category', 'Customer Segment'],
+            calculation: 'average',
+            xColumn: 'Product Category',
+            groupByColumn: 'Customer Segment',
+            rotated: true,
+            colors: colors,
+            yGrid: false,
+        };
+
+        popily.chart.getAndRender('#chart-3', chart3Options);
+
+        var chart4Options = {
+            source: 'superstore-sales-csv-5',
+            columns: ['Sales', 'Customer Segment', 'Product Category'],
+            calculation: 'sum',
+            colors: colors,
+            yGrid: false,
+            transformations: [{
+                column: 'Customer Segment',
+                op: 'eq',
+                values: ['Consumer', 'Corporate', 'Home Office']
+            }],
+        };
+
+        popily.chart.getAndRender('#chart-4', chart4Options);
+
+        var chart5Options = {
+            source: 'superstore-sales-csv-5',
+            columns: ['Order Date', 'Product Category'],
+            timeInterval: 'month',
+            colors: colors,
+            yGrid: false,
+            yLabel: 'Orders'
+        };
+
+        popily.chart.getAndRender('#chart-5', chart5Options);
+
+    </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script>
+        window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')
+    </script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="assets/js/prism.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+body {
+    background-color: #000;
+    color: #c2c2c2;
+    font-family: 'Lato', sans-serif;
+}
+
+.panel {
+    background-color: #131313;
+    border: none;
+    border-radius: 4px;
+}
+
+.popily-chart text {
+    fill: #c2c2c2;
+}
+
+.popily-title {
+    font-family: inherit;
+}
+
+.c3-bar {
+    fill-opacity: .4;
+    stroke-width: 1
+}
+
+.c3-axis {
+    stroke-opacity: 0;
+}
+
+.c3-tooltip {
+    box-shadow: none;
+}
+
+.c3-tooltip th {
+    background:#111;
+    border: solid 1px #111;
+}
+
+.c3-tooltip tr {
+    border: solid 1px #111;
+}
+
+.c3-tooltip td {
+    border: solid 1px #111;
+    background:#111;
+}
+
+.popily-tooltip {
+    background:#111;
+    border: solid 1px #111;
+}
+
+.popily-tooltip .square{
+    background-color: none;
+}
+
+.popily-tooltip h3{
+    background-color: #111;
+    border: none;
+    font-size: .9em;
+}
+
+.navbar-inverse {
+    background-color: #000;
+}
+
+.btn-danger {
+background-color: #fd4dab;
+}
+
+.btn-success {
+    background-color: #3de6b1;
+}
+
+.btn-danger:hover {
+background-color: #fd4dab;
+}
+
+.btn-success:hover  {
+    background-color: #3de6b1;
+}
+
+.btn-success:active, .btn-danger:active  {
+    background-color: #fdfd00;
+}
+
+pre {
+    background-color: #222;
+    border: #222;
+}
+
+.request-demo {
+    background-color: #fdfd00;
+    color: #222;
+    font-weight: 700;
+}
